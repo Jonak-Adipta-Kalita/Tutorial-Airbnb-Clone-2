@@ -12,9 +12,8 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 
-export default function Header() {
+export default function Header({ searchPlaceholder = "Start your Search" }) {
 	const router = useRouter();
-	const [searchPlaceholder, setSearchPlaceholder] = useState("Start your Search");
 	const [searchInput, setSearchInput] = useState("");
 	const [startDate, setStartDate] = useState(new Date());
 	const [endDate, setEndDate] = useState(new Date());
@@ -31,19 +30,29 @@ export default function Header() {
 	const resetInput = () => {
 		setSearchInput("");
 	};
-	const searchResults = () => {
-		router.push("/search");
+	const search = () => {
+		router.push({
+			pathname: "/search",
+			query: {
+				location: searchInput,
+				startDate: startDate.toISOString(),
+				endDate: endDate.toISOString(),
+				noOfGuests: numberOfGuests,
+			},
+		});
 	};
 	return (
 		<header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
-			<div className="relative flex items-center h-10 cursor-pointer my-auto">
+			<div
+				onClick={() => router.push("/")}
+				className="relative flex items-center h-10 cursor-pointer my-auto"
+			>
 				<Image
 					src="https://links.papareact.com/qd3"
 					alt="airbnb_img"
 					layout="fill"
 					objectFit="contain"
 					objectPosition="left"
-					onClick={() => router.push("/")}
 				/>
 			</div>
 			<div className="flex items-center border-2 rounded-full py-2 md:shadow-sm">
@@ -96,7 +105,7 @@ export default function Header() {
 							Cancel
 						</button>
 						<button
-							onClick={searchResults}
+							onClick={search}
 							className="flex-grow text-red-400"
 						>
 							Search

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 import { 
 	SearchIcon,
@@ -9,6 +10,8 @@ import {
 import { useRouter } from "next/router";
 
 export default function Header() {
+	const [searchPlaceholder, setSearchPlaceholder] = useState("Start your Search");
+	const [searchInput, setSearchInput] = useState("");
 	const router = useRouter();
 	return (
 		<header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
@@ -24,8 +27,10 @@ export default function Header() {
 			</div>
 			<div className="flex items-center border-2 rounded-full py-2 md:shadow-sm">
 				<input
+					value={searchInput}
+					onChange={(e) => setSearchInput(e.target.value)}
 					type="text"
-					placeholder="Start your Search"
+					placeholder={searchPlaceholder}
 					className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
 				/>
 				<SearchIcon

@@ -8,4 +8,8 @@
 	.calendarButton {
 		@apply flex-grow hover:bg-red-400 hover:text-white rounded-xl p-2;
 	}
+	
+	.range {
+		@apply bg-red-400 rounded-xl p-2 text-white;
+	}
 }

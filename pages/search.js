@@ -20,7 +20,13 @@ export default function Search({ searchResults }) {
 			<Header searchPlaceholder={`${location} | ${range} | ${noOfGuests} Guests!!`} />
 			<main className="flex">
 				<section className="flex-grow pt-14 px-6">
-					<p className="text-sm">300+ Stays - {range} - for {noOfGuests} Guests!!</p>
+					<p className="text-sm">
+						300+ Stays - <span className="range">
+							{formatedStartDate}
+						</span> - <span className="range">
+							{formatedEndDate}
+						</span> - for {noOfGuests} Guests!!
+					</p>
 					<h1 className="text-3xl font-semibold mt-2 mb-6">Stays in {location}</h1>
 					<div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
 						<p className="button">Cancellation Flexibility</p>
@@ -45,7 +51,9 @@ export default function Search({ searchResults }) {
 					</div>
 				</section>
 				<section className="">
-					<div className=""></div>
+					<div className="">
+						
+					</div>
 				</section>
 			</main>
 			<Footer />

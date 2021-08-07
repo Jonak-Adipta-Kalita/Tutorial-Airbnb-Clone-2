@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import getCenter from "geolib/es/getCenter";
+import { LocationMarkerIcon } from "@heroicons/react/solid"
 
 export default function Map({ searchResults }) {
 	const [selectedLocation, setSelectedLocation] = useState({});
@@ -37,17 +38,20 @@ export default function Map({ searchResults }) {
 							onClick={() => setSelectedLocation(result)}
 							area-label="push-pin"
 						>
-							📌
+							<LocationMarkerIcon className="h-7 text-red-400" />
 						</p>
 					</Marker>
 					{selectedLocation.long === result.long ? (
 						<Popup
 							closeOnClick={true}
+							closeButton={false}
 							onClose={() => setSelectedLocation({})}
 							latitude={selectedLocation.lat}
 							longitude={selectedLocation.long}
 						>
-							{result.title}
+							<div className="p-2">
+								{result.title}
+							</div>
 						</Popup>
 					) : false}
 				</div>

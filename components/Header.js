@@ -100,13 +100,13 @@ export default function Header({ searchPlaceholder = "Start your Search" }) {
 					<div className="flex">
 						<button
 							onClick={resetInput}
-							className="flex-grow text-gray-500"
+							className="text-gray-500 calendarButton"
 						>
 							Cancel
 						</button>
 						<button
 							onClick={search}
-							className="flex-grow text-red-400"
+							className="text-red-400 calendarButton"
 						>
 							Search
 						</button>

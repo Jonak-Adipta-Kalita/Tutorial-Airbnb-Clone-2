@@ -44,6 +44,9 @@ export default function Search({ searchResults }) {
 						))}
 					</div>
 				</section>
+				<section className="">
+					<div className=""></div>
+				</section>
 			</main>
 			<Footer />
 		</div>
